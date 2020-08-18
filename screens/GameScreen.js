@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {View, Text, StyleSheet, Button, Alert} from 'react-native';
 import NumberContainer from '../components/NumberContainer'
 import Card from '../components/Card';
@@ -6,8 +6,7 @@ import Colors from '../constants/colors';
 const generateRandomNumber = (min, max, exclude) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-    let Num = Math.random() * (max - min) + min;
-    const rndNum = Math.floor(Num);
+    const rndNum = Math.floor(Math.random() * (max - min)) + min;
     if(rndNum === exclude) {
         return generateRandomNumber(min, max, exclude);
     }
@@ -19,9 +18,17 @@ const generateRandomNumber = (min, max, exclude) => {
 
 const GameScreen = props => {
         const [currentGuess, setCurrentGuess] = useState(generateRandomNumber(1, 100, props.userChoice));
+        const [rounds, setRounds] = useState(0);
         const currentLow = useRef(1);
         const currentHigh = useRef(100);
         
+        const {userChoice, onGameOver} = props;
+        useEffect( () => {
+            if(currentGuess === props.userChoice) {
+                props.onGameOver(rounds);
+            }
+        }, [currentGuess, userChoice, onGameOver]);
+
          const nextGuessHandler = direction => {
              if((direction === 'lower' && currentGuess < props.userChoice) || (direction === 'upper' && currentGuess > props.userChoice))
              {
@@ -37,10 +44,13 @@ const GameScreen = props => {
                  currentLow.current = currentGuess;
              }
 
-            const nextNumber =  generateRandomNumber(currentLow.current, currentHigh.current, currentGuess);
+            const nextNumber =  generateRandomNumber(
+                 currentLow.current ,
+                 currentHigh.current ,
+                 currentGuess);
             setCurrentGuess(nextNumber);
-
-         }
+            setRounds(curRounds => curRounds + 1);
+         };
 
         return(
             <View style = {styles.screen}>
