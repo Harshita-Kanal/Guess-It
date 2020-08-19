@@ -72,7 +72,7 @@ const StartGameScreen = props => {
                     <View style = {styles.button}><Button color = {Colors.primary}  title="Confirm" onPress = {confirmInputHandler} /></View>  
                  </View>
              </Card>
-             <br />
+            
              {confirmedOutput}
         </View>
  //   </TouchableWithoutFeedback>  
