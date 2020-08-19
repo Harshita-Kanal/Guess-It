@@ -5,10 +5,29 @@ import Header from './components/Header';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from "./screens/GameScreen";
 import GameOverScreen from './screens/GameOverScreen';
+import * as Font from 'expo-font';
+import {AppLoading} from 'expo';
+
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'montserrat': require('./assets/fonts/Montserrat-SemiBold.ttf'),
+    'montserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf')
+
+  })
+}
+
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [guessRounds, setGuessRounds] = useState(0);
+  const [dataLoaded, setdataLoaded] = useState(false);
+  if(!dataLoaded){
+    return <AppLoading
+            startAsync = {fetchFonts}
+            onFinish = {() => setdataLoaded(true)} 
+            onError = {(err) => console.log(err)}       
+           />
+  }
 
   const configureGameHandler = () => {
     setGuessRounds(0);
