@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, StyleSheet, Text, Button, Image, ScrollView} from 'react-native';
 import Colors from '../constants/colors';
+import MainButton from '../components/MainButton';
 const GameOverScreen = props => {
     return(
         <ScrollView>
         <View style = {styles.screen}>
-            <Text style = {styles.title}>The game is Over!</Text>
+            <Text style = {styles.title}>The Game is Over!</Text>
             <View style = {styles.imageContainer}>
                 <Image style = {styles.image} source={require('../assets/success.png')} />
             </View>
@@ -15,7 +16,7 @@ const GameOverScreen = props => {
             </View>
             {/* <Text  style={styles.text}>The number of Rounds: {props.roundsNumber}</Text>
             <Text style={styles.text}>Number was: {props.userNumber}</Text> */}
-            <Button title = "Start Over" color = {Colors.accent} onPress = {props.onRestart} />
+            <MainButton onPress = {props.onRestart}>Start Over</MainButton>
         </View>
         </ScrollView>
     );
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
             color: Colors.primary,
             margin: 5,
             fontSize: 20,
-            marginBottom: 20,
+            marginBottom: 10,
             textAlign: 'center'
 
         },
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
         color: Colors.accent,
         marginBottom: 10,
         fontSize: 25,
-        marginTop: 60
+        marginTop: 20
 
     }
 });
