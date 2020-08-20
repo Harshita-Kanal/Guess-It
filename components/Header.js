@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
 
     headerTitle: {
-        color: 'black',
+        color: 'white',
         fontSize: 28,
         fontFamily: 'montserrat-bold',
     }

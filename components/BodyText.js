@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
+import Color from '../constants/colors'
 
 const BodyText = props => {
     return(
@@ -11,7 +12,8 @@ const styles = StyleSheet.create({
     text:{
         fontSize: 20,
         marginVertical: 10,
-        fontFamily: 'montserrat'
+        fontFamily: 'montserrat',
+        color: Color.primary
     }
 })
 
