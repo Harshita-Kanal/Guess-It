@@ -11,8 +11,8 @@ const GameOverScreen = props => {
                 <Image style = {styles.image} source={require('../assets/success.png')} />
             </View>
             <View style = {styles.textContainer}>
-                    <Text style={styles.text}>Your phone took <View style = {styles.highlight}>{props.roundsNumber}</View> Rounds
-                    to guess <View style = {styles.highlight}>{props.userNumber}</View> correctly</Text>
+                    <Text style={styles.text}>Your phone took<Text style={styles.highlight}> {props.roundsNumber}</Text> Rounds
+                    to guess <Text style={styles.highlight}>{props.userNumber}</Text> correctly.</Text>
             </View>
             {/* <Text  style={styles.text}>The number of Rounds: {props.roundsNumber}</Text>
             <Text style={styles.text}>Number was: {props.userNumber}</Text> */}
