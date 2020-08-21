@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, Button, Image, ScrollView} from 'react-native';
+import {View, StyleSheet, Text, Button, Image, ScrollView, Dimensions} from 'react-native';
 import Colors from '../constants/colors';
 import MainButton from '../components/MainButton';
 const GameOverScreen = props => {
@@ -31,15 +31,19 @@ const styles = StyleSheet.create({
         },
 
         imageContainer:{
-            height: 250,
-            width: 250,
-            borderRadius: 125,
+            // height: 250,
+            // width: 250,
+            // borderRadius: 125,
+            width: Dimensions.get('window').width * 0.7,
+            height: Dimensions.get('window').width * 0.7,
+            borderRadius: Dimensions.get('window').width * 0.7 / 2,
             shadowColor: 'black',
             shadowOffset: { width: 0, height: 2 },
             shadowRadius: 6,
             shadowOpacity: 0.26,
             elevation: 8,
-            marginVertical: 20,
+            marginVertical: Dimensions.get('window').height / 30,
+            // marginVertical: 20,
             overflow: 'hidden'
 
         },
@@ -57,7 +61,8 @@ const styles = StyleSheet.create({
             fontFamily: 'montserrat',
             color: Colors.primary,
             margin: 5,
-            fontSize: 20,
+           // fontSize: 20,
+            fontSize: Dimensions.get('window').height < 400 ? 16 : 20,
             marginBottom: 10,
             textAlign: 'center'
 

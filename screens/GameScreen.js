@@ -66,6 +66,7 @@ const GameScreen = props => {
          };
 
         return(
+            
             <View style = {styles.screen}>
                 <Text style = {styles.title}>Opponent's Guess</Text>
                 <NumberContainer>{currentGuess}</NumberContainer>
